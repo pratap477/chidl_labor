@@ -12,6 +12,17 @@ set :use_sudo, false
 set :chmod755, "app config db lib public vendor script"
 set :keep_releases, 5
 
+namespace :deploy do
+  desc "Make sure local git is in sync with remote."
+  task :check_revision do
+    on roles(:app) do
+      unless `git rev-parse HEAD` == `git rev-parse origin/master`
+        puts "WARNING: HEAD is not the same as origin/master"
+        puts "Run `git push` to sync changes."
+        exit
+      end
+    end
+  end
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # Default deploy_to directory is /var/www/my_app_name
