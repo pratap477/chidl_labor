@@ -6,7 +6,7 @@
 
 set :rails_env, "production"
 set :application, "child_labor_master"
-set :deploy_to, "/var/www/child_labour-master"
+set :deploy_to, "/var/www/child_labor_master"
 
 server '46.51.222.52', user: 'ubuntu', roles: %w{app db web}, my_property: :my_value
 server '46.51.222.52 ', user: 'ubuntu', roles: %w{app web}, other_property: :other_value

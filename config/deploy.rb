@@ -7,7 +7,7 @@ set :user, "ec2-user"
 set :branch, "master"
 set :stages, %w(staging production)
 set :default_stage, "production"
-set :repo_url, 'git@bitbucket.org:pratappatil/child_labor.git'
+set :repo_url, 'git@github.com:pratap477/chidl_labor.git'
 set :use_sudo, false
 set :chmod755, "app config db lib public vendor script"
 set :keep_releases, 5
