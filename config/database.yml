@@ -1,0 +1,47 @@
+#default: &default
+#  adapter: postgresql
+#  encoding: unicode
+#  username: psql
+#  password: root
+#  pool: 5
+#
+#development:
+#  <<: *default
+#  database: ICL_development
+#
+#test:
+#  <<: *default
+#  database: ICL_test
+#
+#production:
+#  <<: *default
+#  database: ICL_production
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: icl_developement
+  username: root
+  password: 'mindchipp'
+  host: 127.0.0.1
+  port: 3306
+  secure_auth: false
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: icl_test
+  username: root
+  password: 'mindchipp'
+  host: 127.0.0.1
+  port: 3306
+  secure_auth: false
+
+ production:
+   adapter: mysql2
+   encoding: utf8
+   database: icl_production
+   username: root
+   password: 'root'
+   host: 46.51.222.52
+   port: 3306
+   secure_auth: false

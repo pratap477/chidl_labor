@@ -1,0 +1,37 @@
+<table id="datatable" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%=t('action')%></th>
+      <th><%=t('id')%></th>
+      <th><%=t('name')%></th>
+      <th><%=t('address')%></th>
+      <th><%=t('contact_no')%></th>
+      <th><%=t('raid_title')%></th>
+      <th><%=t('raid_date')%></th>
+      <th><%=t('laws')%></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employers.each do |employer| %>
+      <tr>
+        <td class="md">
+          <div>
+          <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
+          <ul class="dropdown-menu dropdown-menu-action">
+            <li><%= link_to "#{t('edit')}", edit_employer_path(employer) %></li>
+            <li><%= link_to "#{t('destroy')}", employer, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+          </div>
+        </td>
+        <td><%= employer.id %></td>
+        <td><%= link_to employer.full_name, edit_employer_path(employer) %></td>
+        <td><%= employer.address %></td>
+        <td><%= employer.contact_no %></td>
+        <td class="md"><%= employer.raid.title %></td>
+        <td class="en"><%= employer.raid.datetime.strftime('%d/%m/%Y') %></td>
+        <td class="md"><%= employer.employer_laws %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

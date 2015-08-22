@@ -1,0 +1,125 @@
+  <div class="row">
+  <div class="col-md-2">
+  <%= label_tag "#{t('police_department')}" %>
+  <%= text_field_tag :department, @department.name, class: 'form-control', disabled: true%><br/>
+  </div>
+  <div class="col-md-8"></div>
+  <div class="col-md-2">
+  <%= label_tag "#{t('date_')}"%>
+  <%= text_field_tag :date, @raid.datetime.strftime('%d/%m/%Y'), class: 'form-control en', disabled: true%><br/>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-12"><b>* <%=t('child_details')%></b></div>
+  </div><br/>
+  <div class="row">
+  <div class="col-md-4">
+    <%= f.text_field :first_name,label:"#{t('first_name')}",placeholder:"#{t('first_name')}"%>
+  </div>
+  <div class="col-md-4">
+    <%= f.text_field :last_name,label:"#{t('last_name')}",placeholder:"#{t('last_name')}"%>
+  </div>
+  <div class="col-md-2"><%= f.number_field :age,label:"#{t('age')}",placeholder:"#{t('age')}"%></div>
+  </div>
+  <div class="row">
+  <div class="col-md-4">
+    <%= f.text_field :father_name,label:"#{t('father_name')}" ,placeholder:"#{t('father_name')}"%>
+  </div>
+  <div class="col-md-4">
+    <%= f.text_field :mother_name ,label:"#{t('mother_name')}",placeholder:"#{t('mother_name')}"%>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+  <%= label_tag "#{t('gender')}" %>
+  <div class="row form-inline">
+  <div class="col-md-2"><%= f.radio_button :gender, "Male", checked: true%> <%= label_tag "#{t('male')}" %></div>
+  <div class="col-md-2"><%= f.radio_button :gender, "Female"%> <%= label_tag "#{t('female')}" %></div></div>
+  </div>
+  </div><br/>
+  <div class="row">
+  <div class="col-md-3">
+    <%= f.text_field :pet_name,label:"#{t('pet_name')}",placeholder:"#{t('pet_name')}"%>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :mother_tongue,label:"#{t('mother_tongue')}",placeholder:"#{t('mother_tongue')}"%>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+  <%= f.fields_for :addresses do |ff|%>
+    <%= render '/children/addresses_form', f: ff %>
+  <%end%>
+  </div>
+  </div><br/>
+  <div class="row">
+  <div class="col-md-12"><b class="md"><%=t('write_answer_of_questions')%></b></div>
+  </div>
+  <div class="col-md-12">
+    <div class="col-md-4"><%= label_tag "#{t('question')}" %></div>
+    <div class="col-md-4"><%= label_tag "#{t('answer')}"%></div>
+  </div>
+  <% @questions.each_with_index do |q, i|%>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4">
+          <i class="en"><%= i+1 %>.</i> <%= q.question %>
+        </div>
+        <div class="col-md-4">
+          <% if q.is_yes_no_answer %>
+          <% is_checked = @child.ans_yes_no(q.id) %>
+            <div class="row form-inline">
+              <div class="col-md-3">
+              <% if is_checked.nil? || is_checked %>
+                <%= radio_button_tag "answers[#{q.id}][]",'होय', checked: true%>  <%= label_tag "#{t('y')}"%>
+              <%else%>
+                <%= radio_button_tag "answers[#{q.id}][]",'होय'%>  <%= label_tag "#{t('y')}"%>
+              <%end%>
+              </div>
+              <div class="col-md-3">
+              <% if is_checked.nil? || is_checked %>
+                <%= radio_button_tag "answers[#{q.id}][]",'नाही'%> <%= label_tag "#{t('n')}"%>
+              <%else%>
+                <%= radio_button_tag "answers[#{q.id}][]",'नाही', checked: true%> <%= label_tag "#{t('n')}"%>
+              <%end%>
+              </div>
+            </div>
+          <% else %>
+            <%= text_field_tag "answers[#{q.id}][]", @child.ans(q.id), class: 'form-control', placeholder:"#{t('answer')}"%>
+          <%end%>
+        </div>
+      </div>
+    </div><br/>
+  <% end %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.text_area :description, rows: 10,label:"#{t('description')}",placeholder:"#{t('description')}"%>
+    </div>
+  </div>
+  <% unless @child.id.blank? %>
+  <div class="row">
+    <div class="col-md-4">
+    <%= f.text_field :submited_by_user,label: "#{t('submited_by_user')}", disabled: true%>
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-2">
+      <%= f.label "#{t('attachment')}",:class => 'control-label' %>
+    </div>
+    <div class="col-md-10">
+      <%= link_to "#{t('add_file')}", attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
+    </div>
+    <div class="col-md-12 en">
+      <div class="attachment">
+        <% unless @child.new_record? %>
+          <% @child.attachments.each do |attachment|%>
+            <% if IMAGE_CONTENT_TYPE.include? attachment.file_content_type %>
+              <%= image_tag "#{attachment.file.url}", width: 200, height: 200 %><br/>
+            <%end%>
+            <%= link_to attachment.file_file_name, attachment.file.url, target: '_blank' %><br/>
+          <%end%>
+        <% end %>
+      </div>
+    </div>
+  </div>

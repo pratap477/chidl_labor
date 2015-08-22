@@ -1,0 +1,27 @@
+<table id="datatable" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%="#{t('id')}"%></th>
+      <th><%="#{t('title')}"%></th>
+      <th><%="#{t('date_')}"%></th>
+      <th><%="#{t('time')}"%></th>
+      <th><%="#{t('raid_for')}"%></th>
+      <th><%="#{t('location')}"%></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @raids.each do |raid| %>
+      <tr>
+        <td></td>
+        <td><%= raid.id%></td>
+        <td class="md"><%= link_to raid.title ,child_beggers_report_path(raid.id)%></td>
+        <td class="en"><%= raid.datetime.strftime('%d/%m/%Y') %></td>
+        <td class="en"><%= raid.datetime.strftime('%I:%M %p') %></td>
+        <td class="md"><%= raid.raid_for %></td>
+        <td><%= raid.location.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
