@@ -15,7 +15,6 @@
  *= require bootstrap.min
  *= require main
  *= require responsive
- *= require toastr.min
  *= require token-input
  *= require_self
 */
