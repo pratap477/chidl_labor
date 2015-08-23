@@ -45,4 +45,3 @@ production:
    host: 127.0.0.1
    port: 3306
    secure_auth: false
-   socket: /var/run/mysqld/mysqld.sock
