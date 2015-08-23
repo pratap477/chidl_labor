@@ -11,10 +11,13 @@ set :deploy_via, :remote_cache
 
 set :rails_env, "production"
 
-server '46.51.222.52', user: 'ubuntu', roles: %w{app}
-server '46.51.222.52 ', user: 'ubuntu', roles: %w{web}
-server '46.51.222.52 ', user: 'ubuntu', roles: %w{db}
+#server '46.51.222.52', user: 'ubuntu', roles: %w{app}
+#server '46.51.222.52 ', user: 'ubuntu', roles: %w{web}
+#server '46.51.222.52 ', user: 'ubuntu', roles: %w{db}
 
+role :app, %w{ubuntu@46.51.222.52}
+role :web, %w{ubuntu@46.51.222.52}
+role :db, %w{ubuntu@46.51.222.52}
 
 # role-based syntax
 # ==================
