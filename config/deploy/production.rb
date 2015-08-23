@@ -6,13 +6,13 @@ require 'capistrano/setup'
 require 'capistrano/deploy'
 
 set :stage, :production
-
+set :use_sudo, false
+set :deploy_via, :remote_cache
 
 set :rails_env, "production"
-set :application, "child_labor_master"
 
-server '46.51.222.52', user: 'ubuntu', roles: %w{app web db}
-server '46.51.222.52 ', user: 'ubuntu', roles: %w{app}
+server '46.51.222.52', user: 'ubuntu', roles: %w{app}
+server '46.51.222.52 ', user: 'ubuntu', roles: %w{web}
 server '46.51.222.52 ', user: 'ubuntu', roles: %w{db}
 
 
@@ -55,11 +55,12 @@ server '46.51.222.52 ', user: 'ubuntu', roles: %w{db}
 # Global options
 # --------------
   set :ssh_options, {
-    keys: %w(/home/ubuntu/.ssh/id_rsa),
-    forward_agent: false,
-    auth_methods: %w(publickey password)
+    keys: %w(/home/pratap/.ssh/id_rsa),
+    forward_agent: true
   }
+
 #
+
 # The server-based syntax can be used to override options:
 # ------------------------------------
 # server 'example.com',
@@ -72,3 +73,26 @@ server '46.51.222.52 ', user: 'ubuntu', roles: %w{db}
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
+#  # make sure we're deploying what we think we're deploying
+
+#
+#  # compile assets locally then rsync
+#  #after :deploy, 'deploy:symlink:shared'
+#  after :finishing, 'deploy:cleanup'
+#
+#  after :restart, :clear_cache do
+#    on roles(:web), in: :groups, limit: 3, wait: 10 do
+#      # Here we can do anything such as:
+#      # within release_path do
+#      #   execute :rake, 'cache:clear'
+#      execute "sudo /etc/init.d/apache2 restart"
+#
+#      # end
+#    end
+#  end
+#
+#
+#  after :publishing, :restart
+
+#end

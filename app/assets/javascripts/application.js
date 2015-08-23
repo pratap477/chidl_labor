@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
-//= require_tree .
+//= require bootstrap.min
+//= require jquery.tokeninput
+//= require toastr.min
+//= require custome
