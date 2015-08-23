@@ -1,16 +1,20 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
+require 'capistrano/setup'
+require 'capistrano/deploy'
+require 'capistrano/rails/migrations'
+require 'capistrano/rails/assets'
 
 set :application, 'child_labor_master'
 set :scm, :git
 set :user, "ec2-user"
 set :branch, "master"
-set :stages, %w(staging production)
-set :default_stage, "production"
 set :repo_url, 'git@github.com:pratap477/chidl_labor.git'
+set :deploy_to, "/var/www/child_labor_master/chidl_labor"
+
 set :use_sudo, false
 set :chmod755, "app config db lib public vendor script"
-set :keep_releases, 5
+#set :keep_releases, 5
 
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
@@ -23,6 +27,12 @@ namespace :deploy do
       end
     end
   end
+end
+
+#set :linked_files, %w{config/database.yml}
+
+# dirs we want symlinking to shared
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # Default deploy_to directory is /var/www/my_app_name
@@ -52,12 +62,23 @@ namespace :deploy do
 # set :keep_releases, 5
 
 namespace :deploy do
+  # make sure we're deploying what we think we're deploying
+  before :deploy, "deploy:check_revision"
+  # only allow a deploy with passing tests to deployed
+
+  # compile assets locally then rsync
+  after :deploy, 'deploy:symlink:shared'
+  after :finishing, 'deploy:cleanup'
+end
+
+namespace :deploy do
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
+
       # end
     end
   end

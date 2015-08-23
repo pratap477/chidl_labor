@@ -2,15 +2,17 @@
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
+require 'capistrano/setup'
+require 'capistrano/deploy'
+
+set :stage, :production
 
 
 set :rails_env, "production"
 set :application, "child_labor_master"
-set :deploy_to, "/var/www/child_labor_master"
-set :deploy_via, :copy
 
-server '46.51.222.52', user: 'ubuntu', roles: %w{app db web}, my_property: :my_value
-server '46.51.222.52 ', user: 'ubuntu', roles: %w{app web}, other_property: :other_value
+server '46.51.222.52', user: 'ubuntu', roles: %w{app web db}
+server '46.51.222.52 ', user: 'ubuntu', roles: %w{app}
 server '46.51.222.52 ', user: 'ubuntu', roles: %w{db}
 
 
@@ -36,6 +38,12 @@ server '46.51.222.52 ', user: 'ubuntu', roles: %w{db}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
+#namespace :deploy do
+#  task :restart, roles(:web,:app) do
+#    run "cd #{current_path} && chmod -R 755 #{chmod755}"
+#    run "touch #{current_path}/tmp/restart.txt"
+#  end
+#end
 
 
 # Custom SSH Options

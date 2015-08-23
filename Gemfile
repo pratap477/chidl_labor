@@ -34,10 +34,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "capistrano"
+gem "capistrano-deploytags"
+# rails specific capistrano funcitons
+gem 'capistrano-rails', '~> 1.1.0'
 
-group :development do
-  gem 'capistrano'
-end
+# integrate bundler with capistrano
+gem 'capistrano-bundler'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
