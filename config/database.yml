@@ -42,6 +42,6 @@ production:
    database: icl_production
    username: root
    password: 'root'
-   host: 127.0.0.1
+   host: 46.51.222.52
    port: 3306
    secure_auth: false
