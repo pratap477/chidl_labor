@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   add_breadcrumb 'वापरकर्ते', :users_path
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_role_and_department, only: [:new, :create, :edit, :update, :show]
-  # GET /users
+  before_filter :authenticate_user!
+# GET /users
   # GET /users.json
   def index
     if params[:q]

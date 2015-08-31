@@ -2,6 +2,7 @@ class ComplaintsController < ApplicationController
   add_breadcrumb 'डॅशबोर्ड', :root_path
   add_breadcrumb 'तक्रार', :new_complaint_path
   before_action :set_complaint, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /complaints
   # GET /complaints.json

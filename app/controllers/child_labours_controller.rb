@@ -3,6 +3,7 @@ class ChildLaboursController < ApplicationController
   add_breadcrumb 'बाल कामगार', :child_labours_path
   before_action :set_raid, only: [:new, :edit]
   before_action :set_child, only: [:show, :edit]
+  before_filter :authenticate_user!
 
   # GET /child_labours
   # GET /child_labours.json

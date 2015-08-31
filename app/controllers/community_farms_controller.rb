@@ -2,6 +2,7 @@ class CommunityFarmsController < ApplicationController
   add_breadcrumb 'डॅशबोर्ड', :root_path
   before_action :set_raid_location, only: [:new, :edit, :create, :update, :community_farm, :create_community_farm]
   before_action :set_community_farm, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /community_farms
   # GET /community_farms.json

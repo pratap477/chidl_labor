@@ -3,6 +3,7 @@ class ChildBeggersController < ApplicationController
   add_breadcrumb 'बाल भिक्षुक', :child_beggers_path
   before_action :set_raid, only: [:new, :edit]
   before_action :set_child, only: [:show, :edit]
+  before_filter :authenticate_user!
 
   # GET /child_beggers
   # GET /child_beggers.json

@@ -3,6 +3,7 @@ class RaidsController < ApplicationController
   add_breadcrumb 'डॅशबोर्ड', :root_path
   add_breadcrumb 'छाप्याचे वेळापत्रक', :edit_raid_path
   before_action :set_raid, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /raids
   # GET /raids.json

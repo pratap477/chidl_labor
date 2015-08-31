@@ -2,6 +2,7 @@ class EmployersController < ApplicationController
   add_breadcrumb 'डॅशबोर्ड', :root_path
   add_breadcrumb 'अाराेपी', :employers_path
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /employers
   # GET /employers.json

@@ -1,0 +1,144 @@
+<ol class="breadcrumb">
+  <li><a href="index.html">Home</a></li>
+  <li class="active">Register A Complaints</li>
+</ol><!-- breadcrum -->
+<div class="container">
+  <!-- <div class="col-lg-2"></div> -->
+  <div class="col-lg-11 col-sm-11">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-lg-3 col-sm-3"></div>
+        <%= flash_messages %>
+        <%= image_tag 'complaint.jpg' ,:hspace => '50' ,:class => "img-responsive" %>
+        &nbsp;
+        <%= form_for(:user_complaint, :url => {:controller => 'homes',:action => 'complaint'}, :method => :post, :html => {:class => 'form-horizontal',:role => 'form' }) do |f| %>
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Complainer's Name</label>
+              <div class="col-sm-10">
+                <%= f.text_field :complainer_name, :class => 'form-control' ,:placeholder => 'Your Name' %>
+                <% if !@user_complaint.nil? %>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:complainer_name] && @user_complaint.errors[:complainer_name].class.name != "String") ? (@user_complaint.errors[:complainer_name].join(", ")) : (@user_complaint.errors[:complainer_name]) %></p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Contact Number</label>
+              <div class="col-sm-10">
+                <%= f.text_field :contact_number, :class => 'form-control' ,:placeholder => '9689101088' %>
+                <% if !@user_complaint.nil? %>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:contact_number] && @user_complaint.errors[:contact_number].class.name != "String") ? (@user_complaint.errors[:contact_number].join(", ")) : (@user_complaint.errors[:contact_number]) %></p>
+                <% end %>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Complainer's Email</label>
+              <div class="col-sm-10">
+                <%= f.text_field :complainer_email, :class => 'form-control' ,:placeholder => 'example@gmail.com' %>
+                <% if !@user_complaint.nil? %>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:complainer_email] && @user_complaint.errors[:complainer_email].class.name != "String") ? (@user_complaint.errors[:complainer_email].join(", ")) : (@user_complaint.errors[:complainer_email]) %></p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Complaint Area</label>
+              <div class="col-sm-10">
+                <%= f.text_field :complaint_area, :class => 'form-control' ,:placeholder => 'Your Address' %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputcomplaintsubject" class="col-sm-3 control-label">Complaint Subject</label>
+              <div class="col-sm-10">
+                <%= f.radio_button :complaint_subject, "1" %>
+                <%= f.label :complaint_subject, "Child Labour", :value => "1" %><br>
+                <%= f.radio_button :complaint_subject, "2" %>
+                <%= f.label :complaint_subject, "Child Begging", :value => "2" %><br>
+                <%= f.radio_button :complaint_subject, "Child Begging" %>
+                <%= f.label :complaint_subject, "Other", :value => "3" %>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputemployeradd" class="col-sm-3 control-label">Last Seen Date</label>
+              <div class="col-sm-10">
+                <%= f.text_field :last_seen_date, :class => 'form-control' ,:placeholder => '01-23-2015' %>
+                <% if !@user_complaint.nil? %>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:last_seen_date] && @user_complaint.errors[:last_seen_date].class.name != "String") ? (@user_complaint.errors[:last_seen_date].join(", ")) : (@user_complaint.errors[:last_seen_date]) %></p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputemployeradd" class="col-sm-3 control-label">Get Update on E-mail</label>
+              <div class="col-sm-10">
+                <%= f.check_box :update_on_email  %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputemployername" class="col-sm-3 control-label">Name of Employer</label>
+              <div class="col-sm-10">
+                <%= f.text_field :name_of_employee, :class => 'form-control' ,:placeholder => 'Employer Name' %>
+                <% if !@user_complaint.nil? %>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:name_of_employee] && @user_complaint.errors[:name_of_employee].class.name != "String") ? (@user_complaint.errors[:name_of_employee].join(", ")) : (@user_complaint.errors[:name_of_employee]) %></p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputemployeradd" class="col-sm-3 control-label">Employer Address Details</label>
+              <div class="col-sm-10">
+                <%= f.text_field :employee_address_details, :class => 'form-control' ,:placeholder => 'Employer Address' %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputemployeradd" class="col-sm-3 control-label">Compaint Description</label>
+              <div class="col-sm-10">
+                <%= f.text_field :complaint_description, :class => 'form-control' ,:placeholder => 'Details of Complaint' %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-9" align="center">
+                <%= f.submit "Save Complaint" ,:class => 'btn btn-default' ,:style=>"text-align: center;"%>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5 col-sm-5">
+    <%= image_tag "helping_hand.jpg", :class=>"img-responsive video", :alt=>"Mumbai Police" %>
+    <a href="video.html" >
+      <%= image_tag "vdo.png", :class=>"img-responsive", :alt=>"Video"%></a>
+    <h3>News & Updates</h3>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-lg-4 col-sm-4"><%= image_tag "23june.jpg", :class=>"img-responsive", :alt=>"Responsive image"%></div>
+        <div class="col-lg-12 col-sm-12">
+          <p><a href="">Some news & updates headline will be displayed here which people would read</a></p>
+        </div>
+        <div class="col-lg-4 col-sm-4"><%= image_tag "12june.jpg", :class=>"img-responsive", :alt=>"Responsive image"%></div>
+        <div class="col-lg-12 col-sm-12">
+          <p><a href="">Some news & updates headline will be displayed here which people would read</a></p>
+        </div>
+        <div class="col-lg-4 col-sm-4"><%= image_tag "15may.jpg", :class=>"img-responsive", :alt=>"Responsive image"%></div>
+        <div class="col-lg-12 col-sm-12">
+          <p><a href="">Some news & updates headline will be displayed here which people would read</a></p>
+        </div>
+        <div class="col-lg-4 col-sm-4"><%= image_tag "7may.jpg", :class=>"img-responsive ", :alt=>"Responsive image"%></div>
+        <div class="col-lg-12 col-sm-12">
+          <p><a href="">Some news & updates headline will be displayed here which people would read</a></p>
+        </div>
+        <button class="col-lg-12 col-sm-16 btn btn-default"><a href=""><span>View all</span></a></button>
+      </div>
+    </div>
+  </div>
+</div>

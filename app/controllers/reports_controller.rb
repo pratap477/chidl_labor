@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   add_breadcrumb 'डॅशबोर्ड', :root_path
   add_breadcrumb 'अहवाल', :reports_path
+  before_filter :authenticate_user!
 
   def child_labours
     @raid = Raid.find(params[:id])

@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  get 'homes/about_us' => 'homes#about_us'
+  get 'homes/employee_guides' => 'homes#employee_guides'
+  get 'homes/complaint' => 'homes#complaint'
+  post 'homes/complaint' => 'homes#complaint'
+  get 'homes/child_labor' => 'homes#child_labor'
+  get 'homes/child_welfare_committee' => 'homes#child_welfare_committee'
+  get 'homes/be_valunteer' => 'homes#be_valunteer'
+  get 'homes/donate' => 'homes#donate'
+  get 'homes/contact_us' => 'homes#contact_us'
+
   resources :complaints
 
   resources :reports do
@@ -63,5 +74,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  root 'dashboard#index'
+  # root 'dashboard#index'
+  root 'homes#index'
+
 end

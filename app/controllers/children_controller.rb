@@ -1,6 +1,7 @@
 class ChildrenController < ApplicationController
   before_action :set_raid, only: [:new, :create, :update, :destroy]
   before_action :set_child, only: [:update, :destroy]
+  before_filter :authenticate_user!
 
   def new
     @child = @raid.children.build

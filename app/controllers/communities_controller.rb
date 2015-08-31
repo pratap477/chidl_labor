@@ -1,6 +1,7 @@
 class CommunitiesController < ApplicationController
   load_and_authorize_resource
   before_action :set_community, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /communities
   # GET /communities.json
