@@ -1,4 +1,7 @@
 class HomesController < ApplicationController
+  before_filter :set_locale
+
+
   layout 'home'
 
   def index
@@ -45,6 +48,10 @@ class HomesController < ApplicationController
        render '/homes/complaint'
      end
     end
+  end
+
+  def set_locale
+    I18n.locale = :en
   end
 
 end
