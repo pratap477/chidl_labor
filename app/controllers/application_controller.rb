@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if !current_user.nil?
-      root_path
+      dashboard_index_path
     end
   end
 end

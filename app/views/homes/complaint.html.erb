@@ -14,11 +14,20 @@
         <%= form_for(:user_complaint, :url => {:controller => 'homes',:action => 'complaint'}, :method => :post, :html => {:class => 'form-horizontal',:role => 'form' }) do |f| %>
 
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-3 control-label">Complainer's Name</label>
+              <label for="inputEmail3" class="col-sm-3 control-label">First Name</label>
               <div class="col-sm-10">
-                <%= f.text_field :complainer_name, :class => 'form-control' ,:placeholder => 'Your Name' %>
+                <%= f.text_field :first_name, :class => 'form-control' ,:placeholder => 'First Name' %>
                 <% if !@user_complaint.nil? %>
-                    <p class="inline-errors"><%= (@user_complaint.errors[:complainer_name] && @user_complaint.errors[:complainer_name].class.name != "String") ? (@user_complaint.errors[:complainer_name].join(", ")) : (@user_complaint.errors[:complainer_name]) %></p>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:first_name] && @user_complaint.errors[:first_name].class.name != "String") ? (@user_complaint.errors[:first_name].join(", ")) : (@user_complaint.errors[:first_name]) %></p>
+                <% end %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Last Name</label>
+              <div class="col-sm-10">
+                <%= f.text_field :last_name, :class => 'form-control' ,:placeholder => 'Last Name' %>
+                <% if !@user_complaint.nil? %>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:last_name] && @user_complaint.errors[:last_name].class.name != "String") ? (@user_complaint.errors[:last_name].join(", ")) : (@user_complaint.errors[:last_name]) %></p>
                 <% end %>
               </div>
             </div>
@@ -26,9 +35,9 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-3 control-label">Contact Number</label>
               <div class="col-sm-10">
-                <%= f.text_field :contact_number, :class => 'form-control' ,:placeholder => '9689101088' %>
+                <%= f.text_field :contact_no, :class => 'form-control' ,:placeholder => '9689101088' %>
                 <% if !@user_complaint.nil? %>
-                    <p class="inline-errors"><%= (@user_complaint.errors[:contact_number] && @user_complaint.errors[:contact_number].class.name != "String") ? (@user_complaint.errors[:contact_number].join(", ")) : (@user_complaint.errors[:contact_number]) %></p>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:contact_no] && @user_complaint.errors[:contact_no].class.name != "String") ? (@user_complaint.errors[:contact_no].join(", ")) : (@user_complaint.errors[:contact_no]) %></p>
                 <% end %>
               </div>
             </div>
@@ -37,9 +46,9 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-3 control-label">Complainer's Email</label>
               <div class="col-sm-10">
-                <%= f.text_field :complainer_email, :class => 'form-control' ,:placeholder => 'example@gmail.com' %>
+                <%= f.text_field :email, :class => 'form-control' ,:placeholder => 'example@gmail.com' %>
                 <% if !@user_complaint.nil? %>
-                    <p class="inline-errors"><%= (@user_complaint.errors[:complainer_email] && @user_complaint.errors[:complainer_email].class.name != "String") ? (@user_complaint.errors[:complainer_email].join(", ")) : (@user_complaint.errors[:complainer_email]) %></p>
+                    <p class="inline-errors"><%= (@user_complaint.errors[:email] && @user_complaint.errors[:email].class.name != "String") ? (@user_complaint.errors[:email].join(", ")) : (@user_complaint.errors[:email]) %></p>
                 <% end %>
               </div>
             </div>
@@ -47,19 +56,21 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-3 control-label">Complaint Area</label>
               <div class="col-sm-10">
-                <%= f.text_field :complaint_area, :class => 'form-control' ,:placeholder => 'Your Address' %>
+                <%= f.text_field :area, :class => 'form-control' ,:placeholder => 'Your Address' %>
               </div>
             </div>
 
             <div class="form-group">
               <label for="inputcomplaintsubject" class="col-sm-3 control-label">Complaint Subject</label>
-              <div class="col-sm-10">
-                <%= f.radio_button :complaint_subject, "1" %>
-                <%= f.label :complaint_subject, "Child Labour", :value => "1" %><br>
-                <%= f.radio_button :complaint_subject, "2" %>
-                <%= f.label :complaint_subject, "Child Begging", :value => "2" %><br>
-                <%= f.radio_button :complaint_subject, "Child Begging" %>
-                <%= f.label :complaint_subject, "Other", :value => "3" %>
+              <div class="col-sm-12">
+                <%= f.radio_button :subject, "1" %>
+                <%= f.label :subject, "Child Labour", :value => "बाल कामगार" %><br>
+                <%= f.radio_button :subject, "2" %>
+                <%= f.label :subject, "Child Begging", :value => "बाल भिक्षुक" %><br>
+                <%= f.radio_button :subject, "3" %>
+                <%= f.label :subject, "Sex Trafficking", :value => "लिंग- वाहतुकीत" %><br>
+                <%= f.radio_button :subject, "4" %>
+                <%= f.label :subject, "Other", :value => "इतर" %>
 
               </div>
             </div>
@@ -99,9 +110,9 @@
             </div>
 
             <div class="form-group">
-              <label for="inputemployeradd" class="col-sm-3 control-label">Compaint Description</label>
+              <label for="inputemployeradd" class="col-sm-3 control-label">Complaint Description</label>
               <div class="col-sm-10">
-                <%= f.text_field :complaint_description, :class => 'form-control' ,:placeholder => 'Details of Complaint' %>
+                <%= f.text_field :description, :class => 'form-control' ,:placeholder => 'Details of Complaint' %>
               </div>
             </div>
 
