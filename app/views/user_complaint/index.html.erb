@@ -1,0 +1,28 @@
+
+<table id="datatable" class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th><%=t('name')%></th>
+    <th><%=t('contact_no')%></th>
+    <th><%=t('email')%></th>
+    <th><%=t('area')%></th>
+    <th><%=t('complaint_subject')%></th>
+    <th><%=t('last_seen_date')%></th>
+    <th><%=t('description')%></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @complaints.each do |complaint| %>
+      <tr>
+        <td><%= complaint.full_name %></td>
+        <td><%= complaint.contact_no %></td>
+        <td><%= complaint.email %></td>
+        <td><%= complaint.area %></td>
+        <td><%= complaint.subject %></td>
+        <td><%= complaint.last_seen_date.strftime('%d/%m/%Y') %></td>
+        <td><%= complaint.description %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

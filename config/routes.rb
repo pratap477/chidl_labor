@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   resources :answers
 
+  resources :user_complaint
   resources :questions
 
   resources :child_labours

@@ -33,6 +33,7 @@
       <div class="collapse navbar-collapse navbar-left">
         <ul class="nav navbar-nav">
           <li class="<%= is_active_controller('dashboard') %>"><%= link_to dashboard_index_path do %><i class="fa fa-dashboard"></i> <%=t('dashboard')%><%end%></li>
+          <li class="<%= is_active_controller('user_complaint') %>"><%= link_to user_complaint_index_path do %><i class="fa fa-bell"></i> <%=t('compliant')%><%end%></li>
           <li class="<%= is_active_controller('users') %>"><%= link_to users_path do %><i class="fa fa-users"></i> <%=t('users')%><%end%></li>
           <li class="<%= is_active_controller('child_labours') %>"><%= link_to child_labours_path do %><i class="fa fa-child"></i> <%=t('child_labour')%><%end%></li>
           <li class="<%= is_active_controller('child_beggers') %>"><%= link_to child_beggers_path do %><i class="fa fa-child"></i> <%=t('child_begger')%><%end%></li>

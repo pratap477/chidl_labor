@@ -119,7 +119,7 @@ mr:
   voter_card: 'मतदार कार्ड'
   pan_card: 'पॅन कार्ड'
   industry_type: 'उद्योग प्रकार'
-
+  compliant: 'सहत्व'
 
   date:
     order:
