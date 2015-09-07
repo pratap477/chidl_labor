@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'homes/penalties' => 'homes#penalties'
   get 'homes/legalprovisions' => 'homes#legalprovisions'
   get 'homes/document' => 'homes#document'
+  get 'homes/sop' => 'homes#sop'
   resources :complaints
 
   resources :reports do
