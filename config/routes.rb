@@ -9,7 +9,19 @@ Rails.application.routes.draw do
   get 'homes/be_valunteer' => 'homes#be_valunteer'
   get 'homes/donate' => 'homes#donate'
   get 'homes/contact_us' => 'homes#contact_us'
-
+  get 'homes/child_labor_definations' => 'homes#child_labor_definations'
+  get 'homes/generalprinciple' => 'homes#generalprinciple'
+  get 'homes/pocwc' => 'homes#pocwc'
+  get 'homes/limitation' => 'homes#limitation'
+  get 'homes/focwc' => 'homes#focwc'
+  get 'homes/responsibilityocwc' => 'homes#responsibilityocwc'
+  get 'homes/childfriendly' => 'homes#childfriendly'
+  get 'homes/occupation' => 'homes#occupation'
+  get 'homes/process_list' => 'homes#process_list'
+  get 'homes/healthandsafty' => 'homes#healthandsafty'
+  get 'homes/penalties' => 'homes#penalties'
+  get 'homes/legalprovisions' => 'homes#legalprovisions'
+  get 'homes/document' => 'homes#document'
   resources :complaints
 
   resources :reports do

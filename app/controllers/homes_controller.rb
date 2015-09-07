@@ -36,6 +36,68 @@ class HomesController < ApplicationController
 
   end
 
+  def child_labor_definations
+
+  end
+
+  def generalprinciple
+
+  end
+
+  def pocwc
+
+  end
+
+  def limitation
+
+  end
+
+  def focwc
+
+  end
+
+  def responsibilityocwc
+
+  end
+
+  def childfriendly
+
+  end
+
+  def sop
+
+  end
+
+  def occupation
+
+  end
+
+  def process_list
+
+  end
+
+  def  healthandsafty
+
+  end
+
+  def penalties
+
+  end
+
+  def legalprovisions
+
+  end
+
+  def document
+
+  end
+
+  def governmentresolution
+
+  end
+
+
+
   def complaint
     if request.post?
       params_user_complaint= params[:user_complaint]
