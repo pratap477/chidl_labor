@@ -1,7 +1,5 @@
 class HomesController < ApplicationController
   before_filter :set_locale
-
-
   layout 'home'
 
   def index
@@ -96,19 +94,61 @@ class HomesController < ApplicationController
 
   end
 
+  def human_trafficking
 
+  end
+
+  def sex_trafficking
+
+  end
+
+  def mumbai_comabats
+
+  end
+
+  def crime_human_traffic
+
+  end
+
+  def sex_traffic_work
+
+  end
+
+  def investing_sex_traffic
+
+  end
+
+  def conducting_sescue
+
+  end
+
+  def victime
+
+  end
+
+  def achieving_higher
+
+  end
+
+  def childlabouract
+
+  end
+
+  def courtjudgment
+
+  end
 
   def complaint
     if request.post?
       params_user_complaint= params[:user_complaint]
       @user_complaint = Complaint.new(:first_name=> params_user_complaint[:first_name] ,:last_name=> params_user_complaint[:last_name], :contact_no => params_user_complaint[:contact_no],:email => params_user_complaint[:email],
-                                          :area => params_user_complaint[:area], :subject => params_user_complaint[:subject],:last_seen_date => params_user_complaint[:last_seen_date], :update_on_email => params_user_complaint[:update_on_email],
-                                          :name_of_employee => params_user_complaint[:name_of_employee],:employee_address_details => params_user_complaint[:employee_address_details], :description => params_user_complaint[:description], :is_private => params_user_complaint[:is_private])
-     if @user_complaint.save
-     redirect_to homes_complaint_path ,:notice =>  "Your Complaint save successfully."
-     else
-       render '/homes/complaint'
-     end
+                                      :area => params_user_complaint[:area], :subject => params_user_complaint[:subject],:last_seen_date => params_user_complaint[:last_seen_date], :update_on_email => params_user_complaint[:update_on_email],
+                                      :name_of_employee => params_user_complaint[:name_of_employee],:employee_address_details => params_user_complaint[:employee_address_details], :description => params_user_complaint[:description], :is_private => params_user_complaint[:is_private])
+      if @user_complaint.save
+        redirect_to homes_complaint_path ,:notice =>  "Your Complaint save successfully."
+      else
+        render '/homes/complaint'
+      end
     end
   end
 

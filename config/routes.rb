@@ -23,6 +23,19 @@ Rails.application.routes.draw do
   get 'homes/legalprovisions' => 'homes#legalprovisions'
   get 'homes/document' => 'homes#document'
   get 'homes/sop' => 'homes#sop'
+  get  'homes/human_trafficking' => 'homes#human_trafficking'
+  get  'homes/sex_trafficking' => 'homes#sex_trafficking'
+  get  'homes/mumbai_comabats' => 'homes#mumbai_comabats'
+  get  'homes/crime_human_traffic' => 'homes#crime_human_traffic'
+
+  get 'homes/sex_traffic_work' => 'homes#sex_traffic_work'
+  get  'homes/investing_sex_traffic' => 'homes#investing_sex_traffic'
+  get  'homes/conducting_sescue' => 'homes#conducting_sescue'
+  get  'homes/victime' => 'homes#victime'
+  get  'homes/achieving_higher' => 'homes#achieving_higher'
+  get  'homes/childlabouract' => 'homes#childlabouract'
+  get  'homes/courtjudgment' => 'homes#courtjudgment'
+
   resources :complaints
 
   resources :reports do
