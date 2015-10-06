@@ -67,7 +67,8 @@ class ComplaintsController < ApplicationController
   def update
     respond_to do |format|
       if @complaint.update(complaint_params)
-        format.html { redirect_to @complaint, notice: 'Complaint was successfully updated.' }
+        raid = create_raid(@complaint)
+        format.html { redirect_to new_employer_path(raid_id: raid.id), notice: COMPLAINT_CREATE }
         format.json { render :show, status: :ok, location: @complaint }
       else
         format.html { render :edit }

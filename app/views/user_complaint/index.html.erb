@@ -15,7 +15,7 @@
   <tbody>
   <% @complaints.each do |complaint| %>
       <tr>
-        <td><%= complaint.full_name %></td>
+        <td><%= link_to complaint.full_name , edit_complaint_path(complaint) %></td>
         <td><%= complaint.contact_no %></td>
         <td><%= complaint.email %></td>
         <td><%= complaint.area %></td>
